@@ -17,5 +17,23 @@ function showClock() {
  * @returns {string}
  */
 function getClock() {
-  return 1 + ":" + 22 + ":" + 30 + " " + 'AM';
+  // Get now date
+  let date = new Date();
+  // Get time
+  let time = {
+    h: date.getHours(),
+    m: date.getMinutes(),
+    s: date.getSeconds(),
+    f: "AM"
+  };
+  // Convert time to civilian format
+  if (time.h === 12) {
+    time.f = "PM";
+  }
+  else if (time.h > 12) {
+    time.f = "PM";
+    time.h -= 12;
+  }
+  // 
+  return time.h + ":" + time.m + ":" + time.s + " " + time.f;
 }
